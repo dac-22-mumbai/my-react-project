@@ -1,18 +1,16 @@
-// INTERPOLATION
 function App() {
-  let isIphone = false;
-  let prodcutTitleIphone = "IPHONE 12";
-  let productTitleAndorid = "Andorid 12";
-  let productPrice = 99.99;
+  let message = "Hello Message"; // String
+  let user = { id: 1, name: "rohit" }; // OBJECT
 
-  // VIEW
   return (
     <div>
-      <h1> {isIphone ? "iphone" : "android"} </h1>
+      <h1>Hello World</h1>
+      <h1>{message}</h1>
 
-      <h1> {isIphone ? prodcutTitleIphone : productTitleAndorid} </h1>
+      {/** DEBUGGING */}
+      <h1>{JSON.stringify(user)} </h1>
 
-      <h1> {productPrice} </h1>
+      <h1>{user.name}</h1>
     </div>
   );
 }
