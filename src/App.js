@@ -1,7 +1,13 @@
+// INTERPOLATION
 function App() {
+  let prodcutTitle = "IPHONE 12";
+  let productPrice = 99.99;
+
+  // VIEW
   return (
     <div>
-      <h1>Auto suggestion / Auto Formatt</h1>
+      <h1> {prodcutTitle} </h1>
+      <h1> {productPrice} </h1>
     </div>
   );
 }
