@@ -1,44 +1,17 @@
 function App() {
-  // Data Member
-  let message = "Hello";
+  let count = 1;
 
-  // Member Function
-  let clickMe = () => {
-    alert("Hello World");
-  };
-
-  let clickMe1 = (p1) => {
-    console.log(p1);
-    console.log(p1.target);
-    alert(p1);
+  let increment = () => {
+    count++;
+    console.log(count);
   };
 
   return (
     <div>
-      <h1>Event Handling</h1>
+      <h1>State Funadamental</h1>
 
-      {/** SPECIAL PARAM */}
-      <input type="button" value="Clicke Me Special" onClick={clickMe1} />
-
-      {/** With PARAM */}
-      <input
-        type="button"
-        value="Click Android"
-        onClick={() => clickMe1("Android")}
-      />
-      <input
-        type="button"
-        value="Click iPhone"
-        onClick={() => clickMe1("iPhone")}
-      />
-      <input
-        type="button"
-        value="Click samsung"
-        onClick={() => clickMe1("Samsung")}
-      />
-
-      {/** SIMPLEST - NO PARAM */}
-      <input type="button" value="Click Me" onClick={clickMe} />
+      <h1>Like {count} </h1>
+      <input type="button" value="Like Me" onClick={increment} />
     </div>
   );
 }
