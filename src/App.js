@@ -1,22 +1,24 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function App() {
-  // Stateful Variable
+  let inputRef = useRef();
   let [list, setList] = useState([]);
 
-  // Event Handler
   let addNewItem = () => {
-    const inputMesage = document.getElementById("id1").value;
+    console.log(document.getElementById("id1"));
+    console.log(inputRef.current);
+
+    const inputMesage = inputRef.current.value;
     const list1 = [inputMesage, ...list];
     setList(list1);
 
-    document.getElementById("id1").value = "";
+    inputRef.current.value = "";
   };
 
   return (
     <div>
-      <h1>Hello World</h1>
-      <input type="text" id="id1" />
+      <h1>Messaging APp</h1>
+      <input type="text" id="id1" ref={inputRef} />
       <input type="button" value="Send" onClick={addNewItem} />
 
       {/** WOrk with list/map */}
