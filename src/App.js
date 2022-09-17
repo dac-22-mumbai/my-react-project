@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div>
-      <h1>Form Registration</h1>
+      <h1 className="bg-success text-light p-3">Form Registration</h1>
 
       <input
         className="form-control my-1"
@@ -47,19 +47,34 @@ function App() {
       ></textarea>
 
       <input
-        className="btn btn-secondary w-100"
+        className="btn btn-outline-success w-100"
         type="button"
         value="Submit"
         onClick={addMovieReview}
       />
 
-      {/** Display the Reviews */}
-      {movieList.map((item) => (
-        <div className="alert alert-secondary m-0 my-1">
-          <strong className="text-capitalize">{item.movieName}</strong>
-          {item.movieReview}
-        </div>
-      ))}
+      <div className="row">
+        {movieList.map((item, index) => (
+          <div className="col-sm-12 col-md-4  my-1">
+            <div class="card">
+              <img
+                src={"https://picsum.photos/200" + index}
+                style={{ height: "200px", objectFit: "cover" }}
+                class="card-img-top"
+                alt="..."
+              />
+
+              <div class="card-body">
+                <h5 class="card-title text-capitalize">{item.movieName}</h5>
+                <p class="card-text">{item.movieReview}</p>
+                <a href="#" class="btn btn-outline-success">
+                  Read Full Review
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
