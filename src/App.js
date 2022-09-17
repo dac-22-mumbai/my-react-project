@@ -8,12 +8,17 @@ function App() {
   };
 
   let clickMe1 = (p1) => {
+    console.log(p1);
+    console.log(p1.target);
     alert(p1);
   };
 
   return (
     <div>
       <h1>Event Handling</h1>
+
+      {/** SPECIAL PARAM */}
+      <input type="button" value="Clicke Me Special" onClick={clickMe1} />
 
       {/** With PARAM */}
       <input
