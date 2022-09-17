@@ -1,9 +1,18 @@
+import { useState } from "react";
+
 function App() {
-  let count = 1;
+  // Stateless Variable :: DOM WILL NOT GET UPDATE :: Page Will Not Update
+  // let count = 1;
+
+  // Stateful Variable :: DOM WILL UPDATE ;: PAGE WILL UPDATE
+  let [count, setCount] = useState(1);
 
   let increment = () => {
+    // variable update
     count++;
-    console.log(count);
+
+    // State Update :: Page update :: DOM UPDATE
+    setCount(count);
   };
 
   return (
