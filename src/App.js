@@ -70,7 +70,7 @@ function App() {
 
       <div className="row">
         {movieList.map((item, index) => (
-          <div className="col-sm-12 col-md-4  my-1">
+          <div key={index} className="col-sm-12 col-md-4  my-1">
             <div class="card">
               <img
                 src={"https://picsum.photos/200" + index}
