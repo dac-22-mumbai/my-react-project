@@ -18,18 +18,25 @@ function App() {
 
   return (
     <div>
-      <h1>Messageing APP</h1>
+      <h1 className="bg-success text-light p-3">Messageing APP</h1>
 
       <input
+        className="form-control form-control-lg my-1"
+        style={{ height: "60px" }}
         type="text"
         placeholder="Whatssapppp...."
         value={message}
         onChange={handleMessageChange}
       />
-      <input type="button" value="Send" onClick={addMessage2MessageList} />
+      <input
+        className="btn btn-outline-success w-100"
+        type="button"
+        value="Send"
+        onClick={addMessage2MessageList}
+      />
 
       {messageList.map((item) => (
-        <h1>{item}</h1>
+        <div className="alert alert-success m-0 my-1">{item}</div>
       ))}
     </div>
   );
