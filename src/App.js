@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function App() {
+  let [validationError, setValidationError] = useState(false);
   let [movieList, setMovieList] = useState([]);
 
   let [movieName, setMovieName] = useState("");
@@ -16,6 +17,14 @@ function App() {
 
   let addMovieReview = () => {
     console.log(movieName, movieReview);
+    if (movieReview.length < 150) {
+      setValidationError(true);
+
+      setTimeout(() => {
+        setValidationError(false);
+      }, 2500);
+      return;
+    }
 
     let newMovieItem = { movieName: movieName, movieReview: movieReview };
     let newMovieList = [newMovieItem, ...movieList];
@@ -45,6 +54,12 @@ function App() {
         value={movieReview}
         onChange={handleMovieReviewChange}
       ></textarea>
+
+      {validationError && (
+        <div className="alert alert-danger m-0 my-1">
+          Review Must have 150 chars.
+        </div>
+      )}
 
       <input
         className="btn btn-outline-success w-100"
