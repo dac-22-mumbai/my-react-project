@@ -1,43 +1,63 @@
 import { useState } from "react";
 
 function App() {
-  let [messageList, setMessageList] = useState([]);
-  let [message, setMessage] = useState("");
+  let [movieList, setMovieList] = useState([]);
 
-  let handleMessageChange = (e) => {
-    // console.log(e.target.value);
-    setMessage(e.target.value);
+  let [movieName, setMovieName] = useState("");
+  let [movieReview, setMovieReview] = useState("");
+
+  let handleMovieNameChange = (e) => {
+    setMovieName(e.target.value);
   };
 
-  let addMessage2MessageList = () => {
-    let newMessageList = [message, ...messageList];
-    setMessageList(newMessageList);
+  let handleMovieReviewChange = (e) => {
+    setMovieReview(e.target.value);
+  };
 
-    setMessage("");
+  let addMovieReview = () => {
+    console.log(movieName, movieReview);
+
+    let newMovieItem = { movieName: movieName, movieReview: movieReview };
+    let newMovieList = [newMovieItem, ...movieList];
+    setMovieList(newMovieList);
+
+    // debug purpose
+    console.log(newMovieList);
+
+    setMovieName("");
+    setMovieReview("");
   };
 
   return (
     <div>
-      <h1 className="bg-success text-light p-3">Messageing APP</h1>
+      <h1>Form Registration</h1>
 
       <input
-        className="form-control form-control-lg my-1"
-        style={{ height: "60px" }}
+        className="form-control my-1"
         type="text"
-        placeholder="Whatssapppp...."
-        value={message}
-        onChange={handleMessageChange}
+        placeholder="Movie Name"
+        value={movieName}
+        onChange={handleMovieNameChange}
       />
+      <textarea
+        className="form-control my-1"
+        placeholder="Movie Review"
+        value={movieReview}
+        onChange={handleMovieReviewChange}
+      ></textarea>
+
       <input
-        className="btn btn-outline-success w-100"
+        className="btn btn-secondary w-100"
         type="button"
-        value="Send"
-        onClick={addMessage2MessageList}
+        value="Submit"
+        onClick={addMovieReview}
       />
 
-      {messageList.map((item, index) => (
-        <div key={index} className="alert alert-success m-0 my-1">
-          {item}
+      {/** Display the Reviews */}
+      {movieList.map((item) => (
+        <div className="alert alert-secondary m-0 my-1">
+          <strong className="text-capitalize">{item.movieName}</strong>
+          {item.movieReview}
         </div>
       ))}
     </div>
