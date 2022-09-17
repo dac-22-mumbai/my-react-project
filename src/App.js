@@ -1,13 +1,30 @@
 function App() {
-  let list = [1, 1, 1, 1, 1, 1, 1];
+  let list = ["Andorid", "Apple", "Samsumg"];
 
   return (
-    <div>
-      {list.map(() => (
-        <h1>Hello afadsf</h1>
-      ))}
-    </div>
+    <>
+      <ul>
+        {list.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+
+      <hr />
+      <div>
+        {list.map((item) => (
+          <h1>{item}</h1>
+        ))}
+      </div>
+
+      <hr />
+      <div>{list.map((item) => item)}</div>
+    </>
   );
 }
+
+/**
+ *  () -> {}
+ *  () => {}
+ */
 
 export default App;
