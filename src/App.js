@@ -1,28 +1,34 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  let inputRef = useRef();
-  let [list, setList] = useState([]);
+  let [messageList, setMessageList] = useState([]);
+  let [message, setMessage] = useState("");
 
-  let addNewItem = () => {
-    console.log(document.getElementById("id1"));
-    console.log(inputRef.current);
+  let handleMessageChange = (e) => {
+    console.log(e.target.value);
+    setMessage(e.target.value);
+  };
 
-    const inputMesage = inputRef.current.value;
-    const list1 = [inputMesage, ...list];
-    setList(list1);
+  let addMessage2MessageList = () => {
+    let newMessageList = [message, ...messageList];
+    setMessageList(newMessageList);
 
-    inputRef.current.value = "";
+    setMessage("");
   };
 
   return (
     <div>
-      <h1>Messaging APp</h1>
-      <input type="text" id="id1" ref={inputRef} />
-      <input type="button" value="Send" onClick={addNewItem} />
+      <h1>Messageing APP</h1>
 
-      {/** WOrk with list/map */}
-      {list.map((item) => (
+      <input
+        type="text"
+        placeholder="Whatssapppp...."
+        value={message}
+        onChange={handleMessageChange}
+      />
+      <input type="button" value="Send" onClick={addMessage2MessageList} />
+
+      {messageList.map((item) => (
         <h1>{item}</h1>
       ))}
     </div>
