@@ -5,7 +5,7 @@ function App() {
   let [message, setMessage] = useState("");
 
   let handleMessageChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setMessage(e.target.value);
   };
 
@@ -35,8 +35,10 @@ function App() {
         onClick={addMessage2MessageList}
       />
 
-      {messageList.map((item) => (
-        <div className="alert alert-success m-0 my-1">{item}</div>
+      {messageList.map((item, index) => (
+        <div key={index} className="alert alert-success m-0 my-1">
+          {item}
+        </div>
       ))}
     </div>
   );
