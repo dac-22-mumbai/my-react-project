@@ -1,26 +1,33 @@
 import { useState } from "react";
 
 function App() {
-  // Stateless Variable :: DOM WILL NOT GET UPDATE :: Page Will Not Update
-  // let count = 1;
+  // let message = "Hello World";
+  let [message, setMessage] = useState("Hello Universe");
 
-  // Stateful Variable :: DOM WILL UPDATE ;: PAGE WILL UPDATE
-  let [count, setCount] = useState(1);
+  // let count = 100;
+  let [count, setCount] = useState(100);
 
-  let increment = () => {
-    // variable update
-    count++;
+  // let active = true;
+  let [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // State Update :: Page update :: DOM UPDATE
-    setCount(count);
+  let login = () => {
+    setIsLoggedIn(true);
+  };
+  let logout = () => {
+    setIsLoggedIn(false);
   };
 
   return (
     <div>
-      <h1>State Funadamental</h1>
+      <h1>Hello World</h1>
 
-      <h1>Like {count} </h1>
-      <input type="button" value="Like Me" onClick={increment} />
+      {isLoggedIn ? <h1>{message}</h1> : <h1>Please Login</h1>}
+      {isLoggedIn && <h1>{message}</h1>}
+
+      <h1>{count}</h1>
+
+      <input type="button" value="Login" onClick={login} />
+      <input type="button" value="Logout" onClick={logout} />
     </div>
   );
 }
