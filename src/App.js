@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <h1>Forms Elements</h1>
+      <h1 className="bg-primary text-light p-3">Forms Elements</h1>
 
       {/** FORM PARTS */}
       <div>
