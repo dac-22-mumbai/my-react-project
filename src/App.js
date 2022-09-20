@@ -6,20 +6,19 @@ function App() {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
 
-  const handleChangeUsername = (e) => {
-    setUsername(e.target.value);
-  };
+  const handleInputChange = (e) => {
+    // console.log(e.target.name);
+    // console.log(e.target.value);
 
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangeMobile = (e) => {
-    setMobile(e.target.value);
+    if (e.target.name == "username") {
+      setUsername(e.target.value);
+    } else if (e.target.name == "password") {
+      setPassword(e.target.value);
+    } else if (e.target.name == "email") {
+      setEmail(e.target.value);
+    } else if (e.target.name == "mobile") {
+      setMobile(e.target.value);
+    }
   };
 
   const handleSubmit = () => {
@@ -32,35 +31,39 @@ function App() {
       <h1>Forms Elements</h1>
 
       <input
+        name="username"
         className="form-control"
         type="text"
         placeholder="Enter Username"
         value={username}
-        onChange={handleChangeUsername}
+        onChange={handleInputChange}
       />
 
       <input
+        name="password"
         className="form-control"
         type="password"
         placeholder="Enter Passwrod"
         value={password}
-        onChange={handleChangePassword}
+        onChange={handleInputChange}
       />
 
       <input
+        name="email"
         className="form-control"
         type="email"
         placeholder="Enter Email"
         value={email}
-        onChange={handleChangeEmail}
+        onChange={handleInputChange}
       />
 
       <input
+        name="mobile"
         className="form-control"
         type="mobile"
         placeholder="Enter Mobile"
         value={mobile}
-        onChange={handleChangeMobile}
+        onChange={handleInputChange}
       />
 
       <input
