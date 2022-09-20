@@ -1,29 +1,24 @@
 import { useState } from "react";
 
 function App() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    email: "",
+    mobile: "",
+  });
 
   const handleInputChange = (e) => {
-    // console.log(e.target.name);
-    // console.log(e.target.value);
+    // console.log(e.target.name, e.target.value);
 
-    if (e.target.name == "username") {
-      setUsername(e.target.value);
-    } else if (e.target.name == "password") {
-      setPassword(e.target.value);
-    } else if (e.target.name == "email") {
-      setEmail(e.target.value);
-    } else if (e.target.name == "mobile") {
-      setMobile(e.target.value);
-    }
+    // explain...
+    const newuser = { ...user, [e.target.name]: e.target.value };
+    setUser(newuser);
   };
 
   const handleSubmit = () => {
     // task is save the form
-    console.log(username, password, email, mobile);
+    console.log(user);
   };
 
   return (
@@ -35,7 +30,7 @@ function App() {
         className="form-control"
         type="text"
         placeholder="Enter Username"
-        value={username}
+        value={user.username}
         onChange={handleInputChange}
       />
 
@@ -44,7 +39,7 @@ function App() {
         className="form-control"
         type="password"
         placeholder="Enter Passwrod"
-        value={password}
+        value={user.password}
         onChange={handleInputChange}
       />
 
@@ -53,7 +48,7 @@ function App() {
         className="form-control"
         type="email"
         placeholder="Enter Email"
-        value={email}
+        value={user.email}
         onChange={handleInputChange}
       />
 
@@ -62,7 +57,7 @@ function App() {
         className="form-control"
         type="mobile"
         placeholder="Enter Mobile"
-        value={mobile}
+        value={user.mobile}
         onChange={handleInputChange}
       />
 
