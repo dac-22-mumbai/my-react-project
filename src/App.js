@@ -30,6 +30,18 @@ function App() {
     });
   };
 
+  const handleEdit = (item, index) => {};
+
+  const handleDelete = (item, index) => {
+    console.log("Handle Delte....", item);
+
+    // delete from the list
+    list.splice(index, 1);
+
+    const newlist = [...list];
+    setList(newlist);
+  };
+
   return (
     <div>
       <h1 className="bg-primary text-light p-3">Forms Elements</h1>
@@ -89,6 +101,7 @@ function App() {
             <th scope="col">Password</th>
             <th scope="col">Email</th>
             <th scope="col">Mobile</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -99,6 +112,25 @@ function App() {
               <td>{"*****"}</td>
               <td>{item.email}</td>
               <td>{item.mobile}</td>
+
+              <td>
+                <span
+                  role="button"
+                  className="badge bg-primary"
+                  // onClick={ handleEdit }
+                  onClick={() => handleEdit(item, index)}
+                >
+                  Edit
+                </span>
+                <span
+                  role="button"
+                  className="badge bg-danger"
+                  // onClick={ handleDelete }
+                  onClick={() => handleDelete(item, index)}
+                >
+                  Del
+                </span>
+              </td>
             </tr>
           ))}
         </tbody>
