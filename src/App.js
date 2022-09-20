@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function App() {
+  const [editOperation, setEditOperation] = useState(false);
   const [list, setList] = useState([]);
   const [user, setUser] = useState({
     username: "",
@@ -30,7 +31,18 @@ function App() {
     });
   };
 
-  const handleEdit = (item, index) => {};
+  const handleEdit = (item, index) => {
+    const newUser = {
+      index: index,
+      username: item.username,
+      password: item.password,
+      email: item.email,
+      mobile: item.mobile,
+    };
+
+    setEditOperation(true);
+    setUser(newUser);
+  };
 
   const handleDelete = (item, index) => {
     console.log("Handle Delte....", item);
@@ -40,6 +52,25 @@ function App() {
 
     const newlist = [...list];
     setList(newlist);
+  };
+
+  const handleUpdate = () => {
+    console.log(user);
+
+    // Update the object
+    list[user.index] = user;
+
+    const newlist = [...list];
+    setList(newlist);
+
+    // Clear the form
+    setUser({
+      username: "",
+      password: "",
+      email: "",
+      mobile: "",
+    });
+    setEditOperation(false);
   };
 
   return (
@@ -84,12 +115,21 @@ function App() {
           onChange={handleInputChange}
         />
 
-        <input
-          className="btn btn-primary w-100 mt-2"
-          type="button"
-          value="Submit"
-          onClick={handleSubmit}
-        />
+        {editOperation ? (
+          <input
+            className="btn btn-primary w-100 mt-2"
+            type="button"
+            value="Update"
+            onClick={handleUpdate}
+          />
+        ) : (
+          <input
+            className="btn btn-primary w-100 mt-2"
+            type="button"
+            value="Add"
+            onClick={handleSubmit}
+          />
+        )}
       </div>
 
       {/** DISPLAY THE LIST */}
