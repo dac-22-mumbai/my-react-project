@@ -1,6 +1,6 @@
-import AppBody from "./AppBody";
-import AppFooter from "./AppFooter";
-import AppHeader from "./AppHeader";
+import AppFooter from "./components/AppFooter";
+import AppBody from "./components/AppBody";
+import AppHeader from "./components/AppHeader";
 
 function App() {
   return (
