@@ -1,18 +1,15 @@
-import AppFooter from "./components/AppFooter";
-import AppBody from "./components/AppBody";
-import AppHeader from "./components/AppHeader";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <AppHeader />
-
-      <AppBody />
-      <AppBody />
-      <AppBody />
-
-      <AppFooter />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="home" element={<h1>HOME</h1>} />
+        <Route path="explore" element={<h1>Explore</h1>} />
+        <Route path="notifications" element={<h1>Notificatoin</h1>} />
+        <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
