@@ -9,6 +9,10 @@ function App() {
       <AppHeader />
 
       <AppHeader />
+
+      <AppBody />
+
+      <AppFooter />
     </div>
   );
 }
@@ -24,4 +28,19 @@ function AppHeader() {
   );
 }
 
+function AppBody() {
+  return (
+    <div>
+      <h1>I am App Body</h1>
+    </div>
+  );
+}
+
+function AppFooter() {
+  return (
+    <div>
+      <h1>I am footer....!</h1>
+    </div>
+  );
+}
 export default App;
