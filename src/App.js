@@ -4,6 +4,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<h1>HOME</h1>} />
         <Route path="home" element={<h1>HOME</h1>} />
         <Route path="explore" element={<h1>Explore</h1>} />
         <Route path="notifications" element={<h1>Notificatoin</h1>} />
