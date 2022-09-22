@@ -4,6 +4,8 @@ function App() {
       <AppHeader />
 
       <AppBody />
+      <AppBody />
+      <AppBody />
 
       <AppFooter />
     </div>
@@ -33,19 +35,7 @@ function AppBody() {
         nam. Atque sit ipsam, repudiandae deserunt odit expedita doloribus.
         Tempore dolorum cum itaque sequi, voluptatem laborum eum possimus
         repudiandae eius earum architecto fugiat sed officia hic dolorem quod
-        enim provident amet. Commodi nam natus aut, quod eaque, nemo facilis
-        saepe odio provident, quis error culpa consectetur! Earum fuga minus
-        numquam, sed omnis officiis sunt assumenda quia beatae a, obcaecati
-        eaque nihil explicabo debitis maiores vel. Excepturi totam quas sit quam
-        nihil beatae maxime numquam commodi asperiores voluptatibus inventore
-        dolores similique perspiciatis ratione saepe magnam, qui atque,
-        quibusdam, repellat sequi deleniti? Molestias nam non numquam, nesciunt,
-        veniam laudantium unde omnis debitis ullam quidem quis eveniet
-        reiciendis laborum assumenda iste? Minus soluta quasi placeat enim amet.
-        Adipisci quasi rerum ullam odit labore perspiciatis. Rem, sapiente
-        facere odio dolores illo dignissimos ea alias tempora nam vitae,
-        perferendis eaque atque debitis quos voluptatum animi voluptatibus
-        veniam commodi minus iste laudantium!
+        enim provident amet. Commodi nam natus aut, quod eaque, nemo facilis !
       </div>
     </div>
   );
