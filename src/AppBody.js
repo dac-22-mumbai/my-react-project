@@ -28,10 +28,10 @@ function AppBodyContent() {
 function AppBodyActions() {
   return (
     <div className="mb-3">
-      <div className="badge bg-primary">React</div>
-      <div className="badge bg-warning">Like</div>
-      <div className="badge bg-danger">Comment</div>
-      <div className="badge bg-success">Share</div>
+      <div className="badge bg-primary">React &#128526;</div>
+      <div className="badge bg-warning">Like &#128527;</div>
+      <div className="badge bg-danger">Comment &#128528;</div>
+      <div className="badge bg-success">Share &#128530;</div>
     </div>
   );
 }
