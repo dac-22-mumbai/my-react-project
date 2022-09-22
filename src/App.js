@@ -1,8 +1,12 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
+      <Link to="home">Homeeee | </Link>
+      <Link to="explore">Exploreeee | </Link>
+      <Link to="notifications">Notificationnnnn</Link>
+
       <Routes>
         <Route path="/" element={<h1>HOME</h1>} />
         <Route path="home" element={<h1>HOME</h1>} />
