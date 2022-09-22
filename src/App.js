@@ -8,14 +8,26 @@ function App() {
       <Link to="notifications">Notificationnnnn</Link>
 
       <Routes>
-        <Route path="/" element={<h1>HOME</h1>} />
-        <Route path="home" element={<h1>HOME</h1>} />
-        <Route path="explore" element={<h1>Explore</h1>} />
-        <Route path="notifications" element={<h1>Notificatoin</h1>} />
+        <Route path="/" element={<Home />} />
+        <Route path="home" element={<Home />} />
+        <Route path="explore" element={<Explore />} />
+        <Route path="notifications" element={<Notification />} />
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
     </BrowserRouter>
   );
+}
+
+function Home() {
+  return <div className="alert alert-primary">Home</div>;
+}
+
+function Explore() {
+  return <div className="alert alert-danger">Explore</div>;
+}
+
+function Notification() {
+  return <div className="alert alert-success">Notification</div>;
 }
 
 export default App;
