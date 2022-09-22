@@ -1,182 +1,32 @@
-import { useState } from "react";
+// Function => Component => TAG => User Define Tag
+// Java => Pre Define Clasess => String, Number, List
+//      => User Define Class => Person, Employee,...
+// HTML => Pre Define TAG => h1, h2, p, a, div,...
+// React=> User Define Tag => <Person /> <Employee />
 
+// THIS FUNCTION IS ALSO CREATING USER DEFINE TAG
+// <App />
 function App() {
-  const [editOperation, setEditOperation] = useState(false);
-  const [list, setList] = useState([]);
-  const [user, setUser] = useState({
-    username: "",
-    password: "",
-    email: "",
-    mobile: "",
-  });
-
-  const handleInputChange = (e) => {
-    const newuser = { ...user, [e.target.name]: e.target.value };
-    setUser(newuser);
-  };
-
-  const handleSubmit = () => {
-    console.log(user);
-
-    // {...} / [...]
-    const newlist = [user, ...list];
-    setList(newlist);
-
-    // Clear the form
-    setUser({
-      username: "",
-      password: "",
-      email: "",
-      mobile: "",
-    });
-  };
-
-  const handleEdit = (item, index) => {
-    const newUser = {
-      index: index,
-      username: item.username,
-      password: item.password,
-      email: item.email,
-      mobile: item.mobile,
-    };
-
-    setEditOperation(true);
-    setUser(newUser);
-  };
-
-  const handleDelete = (item, index) => {
-    console.log("Handle Delte....", item);
-
-    // delete from the list
-    list.splice(index, 1);
-
-    const newlist = [...list];
-    setList(newlist);
-  };
-
-  const handleUpdate = () => {
-    console.log(user);
-
-    // Update the object
-    list[user.index] = user;
-
-    const newlist = [...list];
-    setList(newlist);
-
-    // Clear the form
-    setUser({
-      username: "",
-      password: "",
-      email: "",
-      mobile: "",
-    });
-    setEditOperation(false);
-  };
-
   return (
     <div>
-      <h1 className="bg-primary text-light p-3">Forms Elements</h1>
-
-      {/** FORM PARTS */}
-      <div>
-        <input
-          name="username"
-          className="form-control"
-          type="text"
-          placeholder="Enter Username"
-          value={user.username}
-          onChange={handleInputChange}
-        />
-
-        <input
-          name="password"
-          className="form-control"
-          type="password"
-          placeholder="Enter Passwrod"
-          value={user.password}
-          onChange={handleInputChange}
-        />
-
-        <input
-          name="email"
-          className="form-control"
-          type="email"
-          placeholder="Enter Email"
-          value={user.email}
-          onChange={handleInputChange}
-        />
-
-        <input
-          name="mobile"
-          className="form-control"
-          type="mobile"
-          placeholder="Enter Mobile"
-          value={user.mobile}
-          onChange={handleInputChange}
-        />
-
-        {editOperation ? (
-          <input
-            className="btn btn-primary w-100 mt-2"
-            type="button"
-            value="Update"
-            onClick={handleUpdate}
-          />
-        ) : (
-          <input
-            className="btn btn-primary w-100 mt-2"
-            type="button"
-            value="Add"
-            onClick={handleSubmit}
-          />
-        )}
-      </div>
-
-      {/** DISPLAY THE LIST */}
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Username</th>
-            <th scope="col">Password</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((item, index) => (
-            <tr key={index}>
-              <th scope="row">{index + 1}</th>
-              <td>{item.username}</td>
-              <td>{"*****"}</td>
-              <td>{item.email}</td>
-              <td>{item.mobile}</td>
-
-              <td>
-                <span
-                  role="button"
-                  className="badge bg-primary"
-                  // onClick={ handleEdit }
-                  onClick={() => handleEdit(item, index)}
-                >
-                  Edit
-                </span>
-                <span
-                  role="button"
-                  className="badge bg-danger"
-                  // onClick={ handleDelete }
-                  onClick={() => handleDelete(item, index)}
-                >
-                  Del
-                </span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h1>Hello World</h1>
+      <h1>Heloo1</h1>
+      <h1>Heloo2</h1>
     </div>
   );
+}
+
+// IF FUNCTION RETURN JSX
+// IT BECOMES COMPONENT
+// IT BECOMES TAG
+// IT BECOMES USER DEFINE COMPONET
+// <Person />
+function Person() {
+  return <div>Hello</div>;
+}
+
+function Employee() {
+  return <div>Employee</div>;
 }
 
 export default App;
