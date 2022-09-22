@@ -8,6 +8,7 @@ function AppBody() {
   );
 }
 
+// We can create seprate file
 function AppBodyContent() {
   return (
     <div className="alert alert-success m-0">
