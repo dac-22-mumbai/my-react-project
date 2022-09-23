@@ -49,6 +49,7 @@ function AppNavLinks() {
 function Home() {
   let navigate = useNavigate();
 
+  // Logical decision at that time THIS HOOK IS IMPORTANT!!!!
   const go2explore = () => {
     navigate("/explore");
   };
