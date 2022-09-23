@@ -1,7 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SimpleList() {
+  let navigate = useNavigate();
   let [list] = useState(Array.from({ length: 10 }));
+
+  const go2simpleform = (item, index) => {
+    navigate(`/simpleform?edit=true&id=${index}`);
+  };
 
   return (
     <div>
@@ -25,8 +31,16 @@ function SimpleList() {
               <td>rohit@gmail.com</td>
               <td>1212121212</td>
               <td>
-                <span className="badge bg-primary">Edit</span>
-                <span className="badge bg-danger">Del</span>
+                <span
+                  className="badge bg-primary"
+                  role="button"
+                  onClick={() => go2simpleform(item, index)}
+                >
+                  Edit
+                </span>
+                <span className="badge bg-danger" role="button">
+                  Del
+                </span>
               </td>
             </tr>
           ))}

@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 function SimpleForm() {
+  let navigate = useNavigate();
+
+  const go2simplelist = () => {
+    navigate("/simplelist");
+  };
+
   return (
     <div>
       <div className="alert alert-light h1 m-0">Basic Form</div>
@@ -32,6 +40,7 @@ function SimpleForm() {
           className="btn btn-lg btn-success w-100"
           type="button"
           value="Submit"
+          onClick={go2simplelist}
         />
       </div>
     </div>
