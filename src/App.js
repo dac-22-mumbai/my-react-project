@@ -1,3 +1,4 @@
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -19,9 +20,27 @@ function App() {
 function AppNavLinks() {
   return (
     <>
-      <Link to="/home">Home |</Link>
-      <Link to="/explore">Explore |</Link>
-      <Link to="/notifications">Notifications </Link>
+      <Navbar bg="success" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand as={Link} to="/home">
+            My Project
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link as={Link} to="/home">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/explore">
+                Explore
+              </Nav.Link>
+              <Nav.Link as={Link} to="/notifications">
+                Notifications
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }
