@@ -1,7 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function SimpleForm() {
   let navigate = useNavigate();
+  let [searchParams] = useSearchParams();
+  let isedit = searchParams.get("edit");
 
   const go2simplelist = () => {
     navigate("/simplelist");
@@ -36,12 +38,21 @@ function SimpleForm() {
           placeholder="Enter Mobile"
         />
 
-        <input
-          className="btn btn-lg btn-success w-100"
-          type="button"
-          value="Submit"
-          onClick={go2simplelist}
-        />
+        {isedit ? (
+          <input
+            className="btn btn-lg btn-success w-100"
+            type="button"
+            value="Update"
+            onClick={go2simplelist}
+          />
+        ) : (
+          <input
+            className="btn btn-lg btn-success w-100"
+            type="button"
+            value="Submit"
+            onClick={go2simplelist}
+          />
+        )}
       </div>
     </div>
   );
