@@ -18,6 +18,9 @@ function AppNavLinks() {
               <Nav.Link as={Link} to="/simpleform">
                 Simple Form
               </Nav.Link>
+              <Nav.Link as={Link} to="/simplelist">
+                Simple List
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
