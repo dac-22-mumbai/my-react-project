@@ -1,11 +1,9 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Link to="home">Homeeee | </Link>
-      <Link to="explore">Exploreeee | </Link>
-      <Link to="notifications">Notificationnnnn</Link>
+    <>
+      <AppNavLinks />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -14,7 +12,17 @@ function App() {
         <Route path="notifications" element={<Notification />} />
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
-    </BrowserRouter>
+    </>
+  );
+}
+
+function AppNavLinks() {
+  return (
+    <>
+      <Link to="/home">Home |</Link>
+      <Link to="/explore">Explore |</Link>
+      <Link to="/notifications">Notifications </Link>
+    </>
   );
 }
 
