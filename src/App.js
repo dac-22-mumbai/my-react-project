@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
   return (
@@ -46,7 +47,18 @@ function AppNavLinks() {
 }
 
 function Home() {
-  return <div className="alert alert-primary">Home</div>;
+  let navigate = useNavigate();
+
+  const go2explore = () => {
+    navigate("/explore");
+  };
+
+  return (
+    <div>
+      <div className="alert alert-primary">Home</div>
+      <input type="button" value="GO TO EXPLORE PAGE" onClick={go2explore} />
+    </div>
+  );
 }
 
 function Explore() {
