@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  Link,
+  Route,
+  Routes,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
 function App() {
   return (
@@ -51,7 +57,8 @@ function Home() {
 
   // Logical decision at that time THIS HOOK IS IMPORTANT!!!!
   const go2explore = () => {
-    navigate("/explore");
+    let message = "Welcome to Expore section";
+    navigate(`/explore?message=${message}`);
   };
 
   return (
@@ -63,7 +70,17 @@ function Home() {
 }
 
 function Explore() {
-  return <div className="alert alert-danger">Explore</div>;
+  let [searchParams, setSearchParams] = useSearchParams();
+  let message = searchParams.get("message");
+  let id = searchParams.get("id");
+
+  return (
+    <>
+      <div className="alert alert-danger">
+        Explore {id} - {message}
+      </div>
+    </>
+  );
 }
 
 function Notification() {
