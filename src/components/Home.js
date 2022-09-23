@@ -10,7 +10,10 @@ function Home() {
         className="row justify-content-center align-items-center"
         style={{ height: "300px" }}
       >
-        <div className="col-10 h3" style={{ fontFamily: "cursive" }}>
+        <div
+          className="col-11 col-md-10 h3"
+          style={{ fontFamily: "cursive", textAlign: "center" }}
+        >
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod
           dignissimos quam, ab labore laudantium ullam consequuntur perferendis
           culpa repellat dolor velit non sequi, eligendi cupiditate minus nisi
@@ -20,7 +23,7 @@ function Home() {
 
       <div className="row">
         {list.map((item, index) => (
-          <div key={index} className="col-4">
+          <div key={index} className="col-12 col-md-4">
             <div className="card">
               <img
                 src={"https://picsum.photos/200" + index}
