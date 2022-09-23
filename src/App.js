@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
   useNavigate,
+  useParams,
   useSearchParams,
 } from "react-router-dom";
 
@@ -18,6 +19,12 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="explore" element={<Explore />} />
         <Route path="notifications" element={<Notification />} />
+
+        {/** DYNAMIC PATH PARAMS */}
+        <Route path="users">
+          <Route path=":userid" element={<UserDetails />} />
+        </Route>
+
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
     </>
@@ -85,6 +92,18 @@ function Explore() {
 
 function Notification() {
   return <div className="alert alert-success">Notification</div>;
+}
+
+function UserDetails() {
+  let { userid } = useParams();
+  console.log(userid);
+
+  return (
+    <>
+      <div>User Details</div>
+      <h1>{userid}</h1>
+    </>
+  );
 }
 
 export default App;
