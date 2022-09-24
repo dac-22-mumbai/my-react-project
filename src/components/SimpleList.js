@@ -10,7 +10,7 @@ function SimpleList() {
     navigate(`/simpleform?edit=true&id=${index}`);
   };
 
-  const makeApiCall = async () => {
+  const getAllUserCall = async () => {
     const url = "http://localhost:8080/user/";
 
     const response = await axios.get(url);
@@ -20,8 +20,16 @@ function SimpleList() {
   };
 
   useEffect(() => {
-    makeApiCall();
+    getAllUserCall();
   }, []);
+
+  const deleteUser = (item, index) => {
+    // alert(item.id);
+    const url = `http://localhost:8080/user/${item.id}`;
+    axios.delete(url);
+
+    getAllUserCall();
+  };
 
   return (
     <div>
@@ -52,7 +60,11 @@ function SimpleList() {
                 >
                   Edit
                 </span>
-                <span className="badge bg-danger" role="button">
+                <span
+                  className="badge bg-danger"
+                  role="button"
+                  onClick={() => deleteUser(item, index)}
+                >
                   Del
                 </span>
               </td>

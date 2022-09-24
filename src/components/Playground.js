@@ -4,7 +4,28 @@ import { useEffect, useState } from "react";
 function Playground() {
   return (
     <div>
-      <Playground3 />
+      <Playground4 />
+    </div>
+  );
+}
+
+function Playground4() {
+  const createUpdateRecord = async () => {
+    const url = "http://localhost:8080/user/2";
+    const data = {
+      username: "appleV1",
+      password: "appleV1",
+      email: "apple@appleV1.com",
+      mobile: "222222",
+    };
+
+    await axios.put(url, data);
+  };
+
+  return (
+    <div>
+      <h1>Playground 4 / Update Operation</h1>
+      <input type="button" value="UPdate Record" onClick={createUpdateRecord} />
     </div>
   );
 }
