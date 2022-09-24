@@ -4,7 +4,32 @@ import { useEffect, useState } from "react";
 function Playground() {
   return (
     <div>
-      <Playground2 />
+      <Playground3 />
+    </div>
+  );
+}
+
+function Playground3() {
+  const createNewRecord = async () => {
+    const url = "http://localhost:8080/user/";
+    const data = {
+      username: "madurai",
+      password: "@#@#",
+      email: "delhi@delhi.com",
+      mobile: "2323232",
+    };
+
+    await axios.post(url, data);
+  };
+
+  return (
+    <div>
+      <h1>Playground 3</h1>
+      <input
+        type="button"
+        value="Create New Record"
+        onClick={createNewRecord}
+      />
     </div>
   );
 }
