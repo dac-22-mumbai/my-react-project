@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import AboutUs from "./components/AboutUs";
 import AppNavLinks from "./components/AppNavLinks";
 import Home from "./components/Home";
 import PageNotFound from "./components/PageNotFound";
@@ -16,6 +17,9 @@ function App() {
         <Route path="simpleform" element={<SimpleForm />} />
         <Route path="simplelist" element={<SimpleList />} />
         <Route path="playground" element={<Playground />} />
+
+        <Route path="aboutus" element={<AboutUs />} />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
