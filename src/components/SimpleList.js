@@ -1,13 +1,27 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SimpleList() {
   let navigate = useNavigate();
-  let [list] = useState(Array.from({ length: 10 }));
+  let [list, setList] = useState([]);
 
   const go2simpleform = (item, index) => {
     navigate(`/simpleform?edit=true&id=${index}`);
   };
+
+  const makeApiCall = async () => {
+    const url = "http://localhost:8080/user/";
+
+    const response = await axios.get(url);
+
+    const newlist = response.data;
+    setList(newlist);
+  };
+
+  useEffect(() => {
+    makeApiCall();
+  }, []);
 
   return (
     <div>
@@ -25,11 +39,11 @@ function SimpleList() {
         <tbody>
           {list.map((item, index) => (
             <tr key={index}>
-              <th scope="row">{index + 1}</th>
-              <td>ROHIT</td>
+              <th scope="row">{item.id}</th>
+              <td>{item.username}</td>
               <td>{"*****"}</td>
-              <td>rohit@gmail.com</td>
-              <td>1212121212</td>
+              <td>{item.email}</td>
+              <td>{item.mobile}</td>
               <td>
                 <span
                   className="badge bg-primary"

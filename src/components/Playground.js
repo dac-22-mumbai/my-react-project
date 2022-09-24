@@ -1,10 +1,39 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Playground() {
   return (
     <div>
-      <Playground1 />
+      <Playground2 />
+    </div>
+  );
+}
+
+function Playground2() {
+  let [list, setList] = useState([]);
+
+  const makeApiCall = async () => {
+    const url = "http://localhost:8080/user/";
+
+    const response = await axios.get(url);
+
+    const newlist = response.data;
+    setList(newlist);
+  };
+
+  useEffect(() => {
+    makeApiCall();
+  }, []);
+
+  return (
+    <div>
+      <h1>Playground 2</h1>
+
+      {list.map((item, index) => (
+        <div key={index} className="alert alert-success m-0 mb-1">
+          {item.username} / {item.email} / {item.mobile}
+        </div>
+      ))}
     </div>
   );
 }
