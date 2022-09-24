@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 function SimpleForm() {
   let navigate = useNavigate();
   let [searchParams] = useSearchParams();
   let isedit = searchParams.get("edit");
+  let editId = searchParams.get("id");
 
   let [isSuccess, setIsSuccess] = useState(false);
   let [isError, setIsError] = useState(false);
@@ -15,6 +16,18 @@ function SimpleForm() {
     email: "",
     mobile: "",
   });
+
+  useEffect(() => {
+    getUserById();
+  }, []);
+
+  const getUserById = async () => {
+    const url = `http://localhost:8080/user/${editId}`;
+    const response = await axios.get(url);
+
+    console.log(response.data);
+    setUser(response.data);
+  };
 
   const inputChangeHandler = (e) => {
     const newUser = { ...user, [e.target.name]: e.target.value };
@@ -40,9 +53,23 @@ function SimpleForm() {
     }
   };
 
+  const updateUser = async () => {
+    try {
+      const url = `http://localhost:8080/user/${editId}`;
+      await axios.put(url, user);
+
+      setUser({ username: "", password: "", email: "", mobile: "" });
+      setIsSuccess(true);
+      setTimeout(() => setIsSuccess(false), 2500);
+    } catch (e) {
+      setIsError(true);
+      setTimeout(() => setIsError(false), 2500);
+    }
+  };
+
   return (
     <div>
-      <div className="alert alert-light h1 m-0">Basic Form</div>
+      <div className="alert alert-light h1 m-0">Basic Form {editId}</div>
 
       <div>
         <input
@@ -86,7 +113,7 @@ function SimpleForm() {
             className="btn btn-lg btn-success w-100"
             type="button"
             value="Update"
-            onClick={go2simplelist}
+            onClick={updateUser}
           />
         ) : (
           <input
@@ -98,7 +125,7 @@ function SimpleForm() {
         )}
 
         {isSuccess && (
-          <div className="alert alert-success">User Added Successfully</div>
+          <div className="alert alert-success">Operation Successfully</div>
         )}
 
         {isError && (

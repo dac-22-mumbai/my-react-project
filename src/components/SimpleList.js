@@ -6,8 +6,8 @@ function SimpleList() {
   let navigate = useNavigate();
   let [list, setList] = useState([]);
 
-  const go2simpleform = (item, index) => {
-    navigate(`/simpleform?edit=true&id=${index}`);
+  const editUser = (item, index) => {
+    navigate(`/simpleform?edit=true&id=${item.id}`);
   };
 
   const getAllUserCall = async () => {
@@ -56,7 +56,7 @@ function SimpleList() {
                 <span
                   className="badge bg-primary"
                   role="button"
-                  onClick={() => go2simpleform(item, index)}
+                  onClick={() => editUser(item, index)}
                 >
                   Edit
                 </span>
