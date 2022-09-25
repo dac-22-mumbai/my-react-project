@@ -5,7 +5,39 @@ import { useEffect, useState } from "react";
 function Playground() {
   return (
     <div>
-      <Playground7 />
+      <Playground8 />
+    </div>
+  );
+}
+
+function Playground8() {
+  return (
+    <div>
+      <form className="needs-validation was-validated">
+        <div>
+          <input
+            type="text"
+            className="form-control form-control-lg"
+            placeholder="Enter Username"
+            minLength="3"
+            required
+          />
+          <div className="valid-feedback">Username is cool 👍 </div>
+          <div className="invalid-feedback">User name is invalid 😠</div>
+        </div>
+
+        <div>
+          <input
+            type="password"
+            className="form-control form-control-lg"
+            placeholder="Enter Password"
+            minLength="3"
+            required
+          />
+          <div className="valid-feedback">Passwod is Ok 👍</div>
+          <div className="invalid-feedback">Passwod is invlid 👎</div>
+        </div>
+      </form>
     </div>
   );
 }
