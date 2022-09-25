@@ -1,10 +1,62 @@
 import axios from "axios";
+import { useRef } from "react";
 import { useEffect, useState } from "react";
 
 function Playground() {
   return (
     <div>
-      <Playground4 />
+      <Playground6 />
+    </div>
+  );
+}
+
+function Playground6() {
+  let ref1 = useRef();
+
+  const submitTheForm = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // dynamically adding the class
+    ref1.current.classList.add("was-validated");
+
+    if (!ref1.current.checkValidity()) {
+      return;
+    }
+
+    // ALL GOOD...
+    // API CALL....
+  };
+
+  return (
+    <div>
+      <form ref={ref1} className="needs-validation ">
+        <input
+          type="text"
+          className="form-control form-control-lg"
+          placeholder="Enter Username"
+          minLength="3"
+          required
+        />
+
+        <input type="button" value="Submit" onClick={submitTheForm} />
+      </form>
+    </div>
+  );
+}
+
+function Playground5() {
+  return (
+    <div>
+      <form className="needs-validation was-validated">
+        <input
+          type="text"
+          className="form-control form-control-lg"
+          placeholder="Enter Username"
+          minLength="3"
+          required
+        />
+      </form>
     </div>
   );
 }
