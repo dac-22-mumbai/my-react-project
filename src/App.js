@@ -43,7 +43,15 @@ function App() {
         {/** UNPROTECTED */}
         <Route path="/" element={<Home />} />
         <Route path="aboutus" element={<AboutUs />} />
-        <Route path="login" element={<Login />} />
+
+        <Route
+          path="login"
+          element={
+            <UnProtectedRoute>
+              <Login />
+            </UnProtectedRoute>
+          }
+        />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
@@ -57,6 +65,16 @@ function ProtectedRoute({ children }) {
   // IF NOT LOGGED IN :: REDIRECT THE USER TO LOGIN
   if (!myjwt) {
     return <Navigate to="/login" replace={true} />;
+  }
+
+  return children;
+}
+
+function UnProtectedRoute({ children }) {
+  let myjwt = localStorage.getItem("appjwt");
+
+  if (myjwt) {
+    return <Navigate to="/" replace={true} />;
   }
 
   return children;

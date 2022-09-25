@@ -16,7 +16,7 @@ function AppNavLinks4LoggedInUser() {
 
   const processLogout = () => {
     localStorage.clear();
-    navigate("/", { replace: true });
+    navigate(0);
   };
 
   return (

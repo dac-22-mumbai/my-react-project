@@ -1,22 +1,32 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let formRef = useRef();
   let navigate = useNavigate();
 
-  const processLogin = () => {
+  const processLogin = (e) => {
     // validation
+    e.preventDefault();
+    e.stopPropagation();
+
+    formRef.current.classList.add("was-validated");
+    if (!formRef.current.checkValidity()) {
+      return;
+    }
+
     // api call
 
     // store jwt
     localStorage.setItem("appjwt", "abcd true");
 
     // forward the user to home page
-    navigate("/", { replace: true });
+    navigate(0);
   };
 
   return (
     <div>
-      <form className="needs-validation " noValidate>
+      <form ref={formRef} className="needs-validation " noValidate>
         <div className="mb-1">
           <input
             type="text"
