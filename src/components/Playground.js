@@ -1,10 +1,68 @@
 import axios from "axios";
+import { useRef } from "react";
 import { useEffect, useState } from "react";
 
 function Playground() {
   return (
     <div>
-      <Playground4 />
+      <Playground5 />
+    </div>
+  );
+}
+
+function Playground5() {
+  const formref = useRef();
+  const [user, setUser] = useState({ username: "", password: "" });
+
+  const inputChangeHandler = (e) => {
+    const newuser = { ...user, [e.target.name]: e.target.value };
+    setUser(newuser);
+  };
+
+  const submitform = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    formref.current.classList.add("was-validated");
+
+    console.log(formref.current);
+  };
+
+  return (
+    <div>
+      <h1>Hello</h1>
+
+      <form ref={formref} class="row g-1 needs-validation">
+        <div>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            value={user.username}
+            onChange={inputChangeHandler}
+            minLength="3"
+            maxLength="8"
+            required
+          />
+          <div className="valid-feedback">Username is ok</div>
+          <div className="invalid-feedback">Username is reequired</div>
+        </div>
+
+        <div>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            value={user.password}
+            onChange={inputChangeHandler}
+            required
+          />
+          <div className="valid-feedback">password is ok</div>
+          <div className="invalid-feedback">password is reequired</div>
+        </div>
+
+        <input type="button" value="submit" onClick={submitform} />
+      </form>
     </div>
   );
 }
