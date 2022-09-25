@@ -6,6 +6,36 @@ function Playground() {
   return (
     <div>
       <Playground8 />
+      <Playground9 />
+    </div>
+  );
+}
+
+function Playground9() {
+  const makeApiCall = async () => {
+    // API 1 CALL
+    const url1 = "https://jsonplaceholder.typicode.com/posts";
+    const resp1 = await axios.get(url1);
+    console.log(resp1.data);
+
+    // API2
+    if (resp1.status == "200") {
+      const url2 = "http://localhost:8080/user/";
+      const resp2 = await axios.get(url2);
+      console.log(resp2.data);
+    }
+
+    // API3
+    const url3 = "http://localhost:8080/user/1";
+    const resp3 = await axios.get(url3);
+    console.log(resp3);
+  };
+
+  return (
+    <div>
+      <hr />
+      <h1>Multiple API Call</h1>
+      <input type="button" value="MakeAPICall" onClick={makeApiCall} />
     </div>
   );
 }
