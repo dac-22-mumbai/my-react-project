@@ -71,53 +71,77 @@ function SimpleForm() {
     <div>
       <div className="alert alert-light h1 m-0">Basic Form {editId}</div>
 
-      <div>
-        <input
-          className="form-control form-control-lg mb-1"
-          type="text"
-          placeholder="Enter Username"
-          name="username"
-          value={user.username}
-          onChange={inputChangeHandler}
-        />
+      <form className="needs-validation was-validated" novalidate>
+        <div className="mb-2">
+          <input
+            className="form-control form-control-lg"
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            value={user.username}
+            onChange={inputChangeHandler}
+            minLength="3"
+            required
+          />
+          <div className="valid-feedback">Username is OK ✅</div>
+          <div className="invalid-feedback">Username is Invalid 👎</div>
+        </div>
 
-        <input
-          className="form-control form-control-lg mb-1"
-          type="password"
-          placeholder="Enter Password"
-          name="password"
-          value={user.password}
-          onChange={inputChangeHandler}
-        />
+        <div className="mb-2">
+          <input
+            className="form-control form-control-lg"
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            value={user.password}
+            onChange={inputChangeHandler}
+            minLength="8"
+            required
+          />
+          <div className="valid-feedback">Password is OK ✅</div>
+          <div className="invalid-feedback">Password is Invalid ❌</div>
+        </div>
 
-        <input
-          className="form-control form-control-lg mb-1"
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          value={user.email}
-          onChange={inputChangeHandler}
-        />
+        <div className="mb-2">
+          <input
+            className="form-control form-control-lg "
+            type="email"
+            placeholder="Enter Email"
+            name="email"
+            value={user.email}
+            onChange={inputChangeHandler}
+            required
+          />
+          <div className="valid-feedback">Email is OK ✅</div>
+          <div className="invalid-feedback">Email is Invalid ❌</div>
+        </div>
 
-        <input
-          className="form-control form-control-lg mb-1"
-          type="text"
-          placeholder="Enter Mobile"
-          name="mobile"
-          value={user.mobile}
-          onChange={inputChangeHandler}
-        />
+        <div className="mb-2">
+          <input
+            className="form-control form-control-lg"
+            type="text"
+            placeholder="Enter Mobile"
+            name="mobile"
+            value={user.mobile}
+            onChange={inputChangeHandler}
+            minLength="10"
+            maxLength="10"
+            required
+          />
+          <div className="valid-feedback">Mobile is OK ✅</div>
+          <div className="invalid-feedback">Mobile is Invalid ❌</div>
+        </div>
 
         {isedit ? (
           <input
-            className="btn btn-lg btn-success w-100"
+            className="btn btn-lg btn-outline-success w-100"
             type="button"
             value="Update"
             onClick={updateUser}
           />
         ) : (
           <input
-            className="btn btn-lg btn-success w-100"
+            className="btn btn-lg btn-outline-success w-100"
             type="button"
             value="Submit"
             onClick={createNewUser}
@@ -133,7 +157,7 @@ function SimpleForm() {
             Error Please Try After some time!
           </div>
         )}
-      </div>
+      </form>
     </div>
   );
 }
