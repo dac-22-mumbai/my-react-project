@@ -137,6 +137,7 @@ function SimpleForm() {
             name="email"
             value={user.email}
             onChange={inputChangeHandler}
+            pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
             required
           />
           <div className="valid-feedback">Email is OK ✅</div>
