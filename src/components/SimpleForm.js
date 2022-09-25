@@ -1,8 +1,10 @@
 import axios from "axios";
+import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 function SimpleForm() {
+  let formRef = useRef();
   let navigate = useNavigate();
   let [searchParams] = useSearchParams();
   let isedit = searchParams.get("edit");
@@ -38,8 +40,19 @@ function SimpleForm() {
     navigate("/simplelist");
   };
 
-  const createNewUser = async () => {
+  const createNewUser = async (e) => {
     try {
+      // stop the default form handler
+      e.preventDefault();
+      e.stopPropagation();
+
+      // vlidation logic
+      formRef.current.classList.add("was-validated");
+      if (!formRef.current.checkValidity()) {
+        return;
+      }
+
+      // ALL GOOD THEN BELOW STTMENT WILL BE EXECUTED
       console.log(user);
       const url = "http://localhost:8080/user/";
       await axios.post(url, user);
@@ -47,20 +60,34 @@ function SimpleForm() {
       setUser({ username: "", password: "", email: "", mobile: "" });
       setIsSuccess(true);
       setTimeout(() => setIsSuccess(false), 2500);
+
+      formRef.current.classList.remove("was-validated");
     } catch (e) {
       setIsError(true);
       setTimeout(() => setIsError(false), 2500);
     }
   };
 
-  const updateUser = async () => {
+  const updateUser = async (e) => {
     try {
+      // stop the default form handler
+      e.preventDefault();
+      e.stopPropagation();
+
+      // vlidation logic
+      formRef.current.classList.add("was-validated");
+      if (!formRef.current.checkValidity()) {
+        return;
+      }
+
       const url = `http://localhost:8080/user/${editId}`;
       await axios.put(url, user);
 
       setUser({ username: "", password: "", email: "", mobile: "" });
       setIsSuccess(true);
       setTimeout(() => setIsSuccess(false), 2500);
+
+      formRef.current.classList.remove("was-validated");
     } catch (e) {
       setIsError(true);
       setTimeout(() => setIsError(false), 2500);
@@ -71,7 +98,7 @@ function SimpleForm() {
     <div>
       <div className="alert alert-light h1 m-0">Basic Form {editId}</div>
 
-      <form className="needs-validation was-validated" novalidate>
+      <form ref={formRef} className="needs-validation" novalidate>
         <div className="mb-2">
           <input
             className="form-control form-control-lg"
