@@ -25,17 +25,17 @@ function Login() {
       }
 
       // api call
-      const url = "http://localhost:8080/auth/authenticate/";
-      const resp = await axios.post(url, user);
+      //const url = "http://localhost:8080/auth/authenticate/";
+      //const resp = await axios.post(url, user);
 
-      if (resp.status == "200") {
-        // store jwt
-        // let data = resp.data.jwt;
-        localStorage.setItem("appjwt", resp.data.jwt);
+      //if (resp.status == "200") {
+      // store jwt
+      // let data = resp.data.jwt;
+      localStorage.setItem("appjwt", "true");
 
-        // forward the user to home page
-        navigate(0);
-      }
+      // forward the user to home page
+      navigate(0);
+      //}
     } catch (e) {
       console.error(e);
       setIsError(true);
